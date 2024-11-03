@@ -44,10 +44,11 @@ const HomeContainer = () => {
       setPage(page - 1);
     }
   };
+  const isNextDisabled = page >= Math.ceil(data.length / itemsPerPage);
 
   return (
     <div className="text-black font-spaceGrotesk bg-white rounded-lg w-fit mx-auto">
-      <table className="text-start shadow-2xl rounded-lg lg:min-w-[800px] max-w-4xl">
+      <table className="text-start shadow-2xl rounded-lg lg:min-w-[800px] max-w-4xl min-h-[520px]">
         <thead className="hidden md:block ">
           <tr className="bg-white *:text-start rounded-t-lg grid grid-cols-4 font-bold px-3 py-2">
             {/* i could have used object.keys to dynamically render the header but not possible since we are not using the keys */}
@@ -116,7 +117,10 @@ const HomeContainer = () => {
             <td>
               <button
                 onClick={handleNextPage}
-                className="flex gap-2 items-center active:border-yellow-300 active:border"
+                disabled={isNextDisabled}
+                className={`flex gap-2 items-center active:border-yellow-300 active:border ${
+                  isNextDisabled ? "cursor-not-allowed" : ""
+                }`}
               >
                 <span>Next</span>
                 <svg
