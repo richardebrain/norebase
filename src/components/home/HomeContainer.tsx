@@ -58,7 +58,7 @@ const HomeContainer = () => {
           </tr>
         </thead>
 
-        <tbody >
+        <tbody>
           {loading && (
             <>
               {Array.from({ length: 10 }).map((_, index) => {
@@ -75,13 +75,22 @@ const HomeContainer = () => {
               })}
             </>
           )}
-          {paginatedData.map((item, index) => {
-            return <List key={item.id} item={item} index={index} />;
-          })}
+          {!loading && data.length === 0 && (
+            <tr>
+              <td colSpan={4} className="text-center py-4">
+                No data found
+              </td>
+            </tr>
+          )}
+          {!loading &&
+            data.length > 0 &&
+            paginatedData.map((item, index) => {
+              return <List key={item.id} item={item} index={index} />;
+            })}
         </tbody>
-       
+
         <tfoot>
-            {/* the buttons could also become a component as well for reusability */}
+          {/* the buttons could also become a component as well for reusability */}
           <tr className="flex justify-between items-end px-3 py-2 font-bold">
             <td>
               {page > 1 && (
