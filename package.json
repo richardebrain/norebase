@@ -2,6 +2,11 @@
   "name": "norebase",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Richard Adebayo",
+    "email": "richardebrain20@gmail.com",
+    "url": "https://richardadebayo.vercel.app"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
